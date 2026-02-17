@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Family Meals</title>
+
+  <!-- Prevent favicon console noise in local file mode -->
+  <link rel="icon" href="data:,">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🍲</div>
+      <div>
+        <div class="title">Family Meals</div>
+        <div class="subtitle" id="subtitle">Ottawa • Family of 4</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="tab active" id="tab-today">Today</button>
+      <button class="tab" id="tab-week">Week</button>
+      <button class="tab" id="tab-shop">Shopping List</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- TODAY -->
+    <section id="view-today" class="view">
+      <div class="viewHeader">
+        <div>
+          <h1 id="todayTitle">Today</h1>
+          <div class="miniActions">
+            <button class="btnSmall" id="randTodayBtn">🎲 Randomize Today</button>
+            <button class="btnSmall ghost" id="resetWeekBtn">♻️ Reset This Week</button>
+          </div>
+        </div>
+        <div class="pill" id="todayPill"></div>
+      </div>
+
+      <div id="todayCards" class="grid"></div>
+      <p class="hint">Tip: tap a meal card to expand ingredients + recipe.</p>
+    </section>
+
+    <!-- WEEK -->
+    <section id="view-week" class="view hidden">
+      <div class="viewHeader">
+        <div>
+          <h1>Week Plan</h1>
+          <div class="miniActions">
+            <button class="btnSmall" id="randWeekBtn">🎲 Randomize Whole Week</button>
+          </div>
+        </div>
+        <div class="pill">Mon → Sun</div>
+      </div>
+
+      <div class="dayTabs" id="dayTabs"></div>
+      <div class="cards" id="weekCards"></div>
+      <p class="hint">Tip: choose a day at the top. Cards expand when clicked.</p>
+    </section>
+
+    <!-- SHOPPING -->
+    <section id="view-shop" class="view hidden">
+      <div class="viewHeader">
+        <div>
+          <h1>Shopping List (This Week)</h1>
+          <div class="miniActions">
+            <button class="btnSmall" id="refreshShopBtn">🔄 Recalculate</button>
+          </div>
+        </div>
+        <div class="pill" id="budgetPill"></div>
+      </div>
+
+      <div class="shopControls">
+        <label class="selectWrap">
+          Store:
+          <select id="storeFilter">
+            <option value="ALL">All stores</option>
+            <option value="Costco">Costco</option>
+            <option value="Walmart">Walmart</option>
+            <option value="AfricanStore">African store</option>
+            <option value="Unknown">Needs price</option>
+          </select>
+        </label>
+
+        <label class="selectWrap">
+          Group:
+          <select id="groupBy">
+            <option value="category">By category</option>
+            <option value="store">By store</option>
+          </select>
+        </label>
+
+        <button class="btn" id="printBtn">🖨️ Print</button>
+      </div>
+
+      <div class="shopSummary" id="shopSummary"></div>
+      <div class="shopList" id="shopList"></div>
+
+      <p class="hint">
+        Prices are estimates in <code>data.js</code>. Add more items to the Price Book to improve accuracy.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>Folder website • Runs locally • Plan saved on this computer</div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
